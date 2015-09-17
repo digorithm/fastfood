@@ -14,11 +14,9 @@ app.config.from_object('config')
 # by modules and controllers
 db = SQLAlchemy(app)
 
-# Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404
-
 # Build the database:
 # This will create the database file using SQLAlchemy
 #db.create_all()
+
+from fastfood.api import APIBase
+

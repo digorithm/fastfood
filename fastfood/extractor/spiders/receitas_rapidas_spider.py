@@ -1,6 +1,9 @@
 import scrapy
+import sys
+sys.path.append("../../../../fastfood/")
 
-from HTMLParser import HTMLParser
+from fastfood.extractor.items import ReceitasRapidasItem
+from fastfood.extractor.utils import strip_tags
 
 """
 first version of the first crawler.
@@ -11,43 +14,15 @@ Other crawlers will be better;
 
 """
 
-class ReceitasRapidasItem(scrapy.Item):
-    
-    title = scrapy.Field()
-    steps = scrapy.Field()
-    ingredients = scrapy.Field()
-
-class MLStripper(HTMLParser):
-    def __init__(self):
-        self.reset()
-        self.fed = []
-    def handle_data(self, d):
-        self.fed.append(d)
-    def get_data(self):
-        return ''.join(self.fed)
-
-
-def strip_tags(html):
-    s = MLStripper()
-    s.feed(html)
-    new_text = ' '.join(s.get_data().splitlines())
-    return new_text
-
-
 class ReceitasRapidasSpider(scrapy.Spider):
     name = 'receitas_rapidas'
     allowed_domain = ['receitasrapidas.com']
 
-    start_urls = [
-            'http://www.receitasrapidas.com/arroz/arroz-de-tamboril-e-camarao/',
-            'http://www.receitasrapidas.com/arroz/arroz-simples/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/bolos-e-tortas-doces/folar-da-pascoa-da-beira-litoral/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/receitas-sobremesas/pudim-de-leite-condensado/',
-            'http://www.receitasrapidas.com/receitas-de-marisco/camarao-frito-com-cerveja/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/quindim/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/receitas-sobremesas/pudim-caseiro/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/bolos-e-tortas-doces/biscoitos-de-chocolate/',
-            'http://www.receitasrapidas.com/doces-e-sobremesas/folhados-de-gila/']
+    start_urls = []
+    with open('receitas_rapidas_urls.txt') as f:
+        data = f.read()
+        start_urls = data.split('\n')
+        del start_urls[-1]
 
     def parse(self,response):
         for url in self.start_urls:
