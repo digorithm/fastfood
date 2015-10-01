@@ -1,0 +1,27 @@
+reporter: apiary
+custom:
+  apiaryApiKey: 152ce54feae997aa0c49a94b89834eb0
+  apiaryApiName: fastfood
+dry-run: null
+hookfiles: null
+language: python
+sandbox: false
+server: null
+server-wait: 3
+init: false
+names: false
+only: []
+output: []
+header: []
+sorted: false
+user: null
+inline-errors: false
+details: false
+method: []
+color: true
+level: info
+timestamp: false
+silent: false
+path: []
+blueprint: 'https://gist.githubusercontent.com/digorithm/624a296e92a4cce602d6/raw/6940dc64d436417344fe2e297d365170ac089ea5/dreddtest.md'
+endpoint: 'http://private-0e561-fastfood.apiary-mock.com'

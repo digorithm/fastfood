@@ -1,0 +1,247 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'dredd' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'dredd', null ]
+6 verbose cache add name=undefined spec="dredd" args=["dredd",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'dredd',
+7 verbose parsed url   path: 'dredd',
+7 verbose parsed url   href: 'dredd' }
+8 silly lockFile bad5d96f-dredd dredd
+9 verbose lock dredd /home/rodrigo/.npm/bad5d96f-dredd.lock
+10 silly lockFile bad5d96f-dredd dredd
+11 silly lockFile bad5d96f-dredd dredd
+12 verbose addNamed [ 'dredd', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 5f288147-dredd dredd@
+15 verbose lock dredd@ /home/rodrigo/.npm/5f288147-dredd.lock
+16 silly addNameRange { name: 'dredd', range: '*', hasData: false }
+17 verbose request where is /dredd
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 3e5ba7e5a21e2c49
+20 verbose url raw /dredd
+21 verbose url resolving [ 'https://registry.npmjs.org/', './dredd' ]
+22 verbose url resolved https://registry.npmjs.org/dredd
+23 verbose request where is https://registry.npmjs.org/dredd
+24 info trying registry request attempt 1 at 16:14:42
+25 http GET https://registry.npmjs.org/dredd
+26 http 200 https://registry.npmjs.org/dredd
+27 silly registry.get cb [ 200,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"CGD91QW2KSXJ4O7EMLQ9NK68Y"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     'content-length': '100082',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Wed, 30 Sep 2015 19:14:46 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '6',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-sjc3122-SJC',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '2',
+27 silly registry.get     'x-timer': 'S1443640486.051740,VS0,VE0',
+27 silly registry.get     vary: 'Accept' } ]
+28 silly addNameRange number 2 { name: 'dredd', range: '*', hasData: true }
+29 silly addNameRange versions [ 'dredd',
+29 silly addNameRange   [ '0.0.1',
+29 silly addNameRange     '0.1.0',
+29 silly addNameRange     '0.1.1',
+29 silly addNameRange     '0.1.2',
+29 silly addNameRange     '0.1.3',
+29 silly addNameRange     '0.1.4',
+29 silly addNameRange     '0.1.5',
+29 silly addNameRange     '0.1.6',
+29 silly addNameRange     '0.1.7',
+29 silly addNameRange     '0.2.1',
+29 silly addNameRange     '0.3.0',
+29 silly addNameRange     '0.3.1',
+29 silly addNameRange     '0.3.2',
+29 silly addNameRange     '0.3.3',
+29 silly addNameRange     '0.3.4',
+29 silly addNameRange     '0.3.6',
+29 silly addNameRange     '0.3.7',
+29 silly addNameRange     '0.3.8',
+29 silly addNameRange     '0.3.9',
+29 silly addNameRange     '0.3.10',
+29 silly addNameRange     '0.3.11',
+29 silly addNameRange     '0.3.12',
+29 silly addNameRange     '0.3.13',
+29 silly addNameRange     '0.3.14',
+29 silly addNameRange     '0.4.0',
+29 silly addNameRange     '0.4.1',
+29 silly addNameRange     '0.4.2',
+29 silly addNameRange     '0.4.3',
+29 silly addNameRange     '0.4.4',
+29 silly addNameRange     '0.4.5',
+29 silly addNameRange     '0.4.6',
+29 silly addNameRange     '0.4.7',
+29 silly addNameRange     '0.4.8',
+29 silly addNameRange     '0.5.0-unstable.1',
+29 silly addNameRange     '0.5.0-unstable.2',
+29 silly addNameRange     '0.5.0-unstable.3',
+29 silly addNameRange     '0.5.0-unstable.4',
+29 silly addNameRange     '0.5.0-unstable.5',
+29 silly addNameRange     '0.5.0',
+29 silly addNameRange     '0.5.1',
+29 silly addNameRange     '0.5.2',
+29 silly addNameRange     '0.5.3',
+29 silly addNameRange     '0.5.4',
+29 silly addNameRange     '0.6.0-unstable.1',
+29 silly addNameRange     '0.6.0',
+29 silly addNameRange     '0.6.1',
+29 silly addNameRange     '0.6.2-pre',
+29 silly addNameRange     '0.6.2-pre2',
+29 silly addNameRange     '0.6.2-pre3',
+29 silly addNameRange     '1.0.0',
+29 silly addNameRange     '1.0.1' ] ]
+30 verbose addNamed [ 'dredd', '1.0.1' ]
+31 verbose addNamed [ '1.0.1', '1.0.1' ]
+32 silly lockFile d69f5951-dredd-1-0-1 dredd@1.0.1
+33 verbose lock dredd@1.0.1 /home/rodrigo/.npm/d69f5951-dredd-1-0-1.lock
+34 silly lockFile 075d2ca8--npmjs-org-dredd-dredd-1-0-1-tgz https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+35 verbose lock https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz /home/rodrigo/.npm/075d2ca8--npmjs-org-dredd-dredd-1-0-1-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz',
+36 verbose addRemoteTarball   'e252f5393ce27ff51658050db0e1ad95cad8e20d' ]
+37 info retry fetch attempt 1 at 16:14:47
+38 verbose fetch to= /tmp/npm-21902-Gioid8FK/registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+39 http GET https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+40 http 200 https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+41 silly lockFile 075d2ca8--npmjs-org-dredd-dredd-1-0-1-tgz https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+42 silly lockFile 075d2ca8--npmjs-org-dredd-dredd-1-0-1-tgz https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz
+43 silly lockFile d69f5951-dredd-1-0-1 dredd@1.0.1
+44 silly lockFile d69f5951-dredd-1-0-1 dredd@1.0.1
+45 silly lockFile 5f288147-dredd dredd@
+46 silly lockFile 5f288147-dredd dredd@
+47 silly resolved [ { name: 'dredd',
+47 silly resolved     version: '1.0.1',
+47 silly resolved     description: 'API Blueprint testing tool',
+47 silly resolved     main: 'lib/dredd.js',
+47 silly resolved     bin: { dredd: 'bin/dredd' },
+47 silly resolved     scripts:
+47 silly resolved      { changelist: 'github-changes -o apiaryio -r dredd --only-pulls --use-commit-body --file CHANGELOG-Generated.md -a',
+47 silly resolved        pretest: 'coffeelint ./src',
+47 silly resolved        test: 'scripts/test',
+47 silly resolved        prepublish: 'scripts/prepublish' },
+47 silly resolved     repository:
+47 silly resolved      { type: 'git',
+47 silly resolved        url: 'git+https://github.com/apiaryio/dredd.git' },
+47 silly resolved     dependencies:
+47 silly resolved      { advisable: '~0.2.0',
+47 silly resolved        async: '^0.9.x',
+47 silly resolved        chai: '^2.1.0',
+47 silly resolved        clone: '^1.0.0',
+47 silly resolved        'coffee-script': '^1.9.1',
+47 silly resolved        drafter: '~0.2.5',
+47 silly resolved        file: '~0.2.2',
+47 silly resolved        gavel: '0.5.2',
+47 silly resolved        glob: '^5.0.3',
+47 silly resolved        html: '~0.0.7',
+47 silly resolved        htmlencode: '~0.0.4',
+47 silly resolved        inquirer: '^0.8.2',
+47 silly resolved        'js-yaml': '^3.2.7',
+47 silly resolved        'markdown-it': '^4.2.0',
+47 silly resolved        'node-uuid': '~1.4.2',
+47 silly resolved        optimist: '~0.6.1',
+47 silly resolved        'pitboss-ng': '^0.3.1',
+47 silly resolved        proxyquire: '~1.4.x',
+47 silly resolved        request: '^2.53.0',
+47 silly resolved        setimmediate: '^1.0.2',
+47 silly resolved        'spawn-sync': '^1.0.11',
+47 silly resolved        'uri-template': '~1.0.0',
+47 silly resolved        winston: '^1.0.0',
+47 silly resolved        'blueprint-transactions': '^0.0.2' },
+47 silly resolved     devDependencies:
+47 silly resolved      { 'body-parser': '^1.12.0',
+47 silly resolved        codo: '^2.0.11',
+47 silly resolved        'coffee-coverage': '^0.6.0',
+47 silly resolved        'coffee-errors': '~0.8.6',
+47 silly resolved        coffeelint: '^1.9.2',
+47 silly resolved        coveralls: '~2.11.2',
+47 silly resolved        express: '^4.12.1',
+47 silly resolved        'github-changes': '^1.0.0',
+47 silly resolved        jscoverage: '~0.5.9',
+47 silly resolved        mocha: '^2.1.0',
+47 silly resolved        'mocha-lcov-reporter': '0.0.2',
+47 silly resolved        nock: '^2.2.0',
+47 silly resolved        sinon: '^1.12.2' },
+47 silly resolved     keywords:
+47 silly resolved      [ 'api',
+47 silly resolved        'test',
+47 silly resolved        'testing',
+47 silly resolved        'documenation',
+47 silly resolved        'integration',
+47 silly resolved        'acceptance' ],
+47 silly resolved     author: { name: 'Adam Kliment', email: 'adam@apiary.io' },
+47 silly resolved     contributors: [ [Object] ],
+47 silly resolved     license: 'MIT',
+47 silly resolved     gitHead: '32dc6f1fba29bd6a51f186c53c95a2e5ed3d010e',
+47 silly resolved     bugs: { url: 'https://github.com/apiaryio/dredd/issues' },
+47 silly resolved     homepage: 'https://github.com/apiaryio/dredd#readme',
+47 silly resolved     _id: 'dredd@1.0.1',
+47 silly resolved     _shasum: 'e252f5393ce27ff51658050db0e1ad95cad8e20d',
+47 silly resolved     _from: 'dredd@',
+47 silly resolved     _npmVersion: '2.11.3',
+47 silly resolved     _nodeVersion: '0.12.7',
+47 silly resolved     _npmUser: { name: 'kubakubula', email: 'kubula@apiary.io' },
+47 silly resolved     dist:
+47 silly resolved      { shasum: 'e252f5393ce27ff51658050db0e1ad95cad8e20d',
+47 silly resolved        tarball: 'http://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz' },
+47 silly resolved     maintainers:
+47 silly resolved      [ [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object] ],
+47 silly resolved     directories: {},
+47 silly resolved     _resolved: 'https://registry.npmjs.org/dredd/-/dredd-1.0.1.tgz' } ]
+48 info install dredd@1.0.1 into /usr/lib
+49 info installOne dredd@1.0.1
+50 verbose lib/node_modules/dredd unbuild
+51 verbose tar unpack /home/rodrigo/.npm/dredd/1.0.1/package.tgz
+52 silly lockFile a79effb3-tar-usr-lib-node-modules-dredd tar:///usr/lib/node_modules/dredd
+53 verbose lock tar:///usr/lib/node_modules/dredd /home/rodrigo/.npm/a79effb3-tar-usr-lib-node-modules-dredd.lock
+54 silly lockFile c70ffce2-rigo-npm-dredd-1-0-1-package-tgz tar:///home/rodrigo/.npm/dredd/1.0.1/package.tgz
+55 verbose lock tar:///home/rodrigo/.npm/dredd/1.0.1/package.tgz /home/rodrigo/.npm/c70ffce2-rigo-npm-dredd-1-0-1-package-tgz.lock
+56 silly gunzTarPerm modes [ '775', '664' ]
+57 error Error: EACCES, mkdir '/usr/lib/node_modules/dredd'
+57 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/dredd']
+57 error   errno: 3,
+57 error   code: 'EACCES',
+57 error   path: '/usr/lib/node_modules/dredd',
+57 error   fstream_type: 'Directory',
+57 error   fstream_path: '/usr/lib/node_modules/dredd',
+57 error   fstream_class: 'DirWriter',
+57 error   fstream_stack:
+57 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+57 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+57 error      'Object.oncomplete (fs.js:108:15)' ] }
+58 error Please try running this command again as root/Administrator.
+59 error System Linux 3.8.0-44-generic
+60 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "dredd"
+61 error cwd /home/rodrigo/Dropbox/Projects/gdd20/fastfood
+62 error node -v v0.10.38
+63 error npm -v 1.4.28
+64 error path /usr/lib/node_modules/dredd
+65 error fstream_path /usr/lib/node_modules/dredd
+66 error fstream_type Directory
+67 error fstream_class DirWriter
+68 error code EACCES
+69 error errno 3
+70 error stack Error: EACCES, mkdir '/usr/lib/node_modules/dredd'
+71 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+71 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+71 error fstream_stack Object.oncomplete (fs.js:108:15)
+72 verbose exit [ 3, true ]

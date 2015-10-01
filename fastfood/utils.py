@@ -1,3 +1,7 @@
+# -*- encoding: utf-8 -*-
+
+basic_food = [u'água', u'sal', u'açucar', u'acucar', u'agua', u'alho', u'pimenta', u'cebola', u'azeite', u'manteiga', u'papel', u'vinagre', u'margarina', u'salsa' u'leite', u'óleo', u'oleo']
+
 selections_names = {}
 
 class AttrDict(dict):
