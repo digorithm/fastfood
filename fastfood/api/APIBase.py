@@ -25,11 +25,11 @@ class Recipes(Resource):
 
             return rbo.list_recipes_by_items(items)
 
-        # check if specific recipe was requested
+        # if nothing specified, return the big list
         if recipe_id is None:
             return rbo.list_full_recipes()
 
-        # if nothing above, return the big list
+        # check if specific recipe was requested
         return rbo.list_full_recipe_by_id(recipe_id)
 
 api.add_resource(Recipes,
