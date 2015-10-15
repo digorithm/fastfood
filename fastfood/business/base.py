@@ -49,7 +49,3 @@ class CrudBO(BaseBO):
             if return_id:
                 return obj.id
             self._session.close()
-
-
-        
-
