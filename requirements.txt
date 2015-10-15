@@ -1,4 +1,4 @@
-libffi
+cffi
 flask
 Flask-SQLAlchemy
 Redis
