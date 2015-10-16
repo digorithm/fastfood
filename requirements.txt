@@ -9,4 +9,4 @@ scrapy
 flask_restful
 pymysql
 gunicorn
-nosetests
+nose
