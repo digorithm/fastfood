@@ -10,3 +10,4 @@ flask_restful
 pymysql
 gunicorn
 nose
+ujson
