@@ -16,3 +16,7 @@ import json
 
 #recipes = rbo.list_recipes_by_items(['ovo', 'chocolate'])
 #print json.dumps(recipes)
+
+@app.route('/')
+def api_base():
+	return 'hello'
