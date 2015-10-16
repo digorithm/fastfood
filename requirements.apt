@@ -8,4 +8,3 @@ libxml2-dev
 libxslt1-dev
 libtidy-dev
 libncurses5-dev
-install libffi-dev

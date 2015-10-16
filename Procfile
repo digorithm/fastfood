@@ -1,0 +1,1 @@
+web: gunicorn run:app -t 100000

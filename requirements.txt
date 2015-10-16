@@ -8,3 +8,4 @@ dockerpty==0.3.4
 scrapy
 flask_restful
 pymysql
+gunicorn

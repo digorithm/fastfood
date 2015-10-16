@@ -6,7 +6,7 @@ fastfood:
     ports:
         - "8080:8080"
     environment:
-        - db_path=mysql+pymysql://root:sa@mysql:3306/geladeiradodia20
+        - db_path=mysql+pymysql://ba67ba5e8674a9:899cbd63@us-cdbr-iron-east-03.cleardb.net/heroku_f5bea19f4318e6d
     links:
         - redis
         - mysql
