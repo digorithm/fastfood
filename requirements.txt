@@ -11,4 +11,4 @@ pymysql
 gunicorn
 nose
 ujson
-newrelic
+newrelic==2.56.0.42
