@@ -11,3 +11,4 @@ pymysql
 gunicorn
 nose
 ujson
+newrelic
