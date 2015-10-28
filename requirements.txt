@@ -14,3 +14,4 @@ ujson
 newrelic==2.56.0.42
 passlib==1.6.5
 itsdangerous==0.24
+Flask-HTTPAuth==2.7.0
