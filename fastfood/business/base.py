@@ -1,5 +1,6 @@
 from fastfood import db
-from fastfood.utils import _extract_selections 
+from fastfood.utils import _extract_selections
+
 
 class BaseBO(object):
 
@@ -15,7 +16,7 @@ class CrudBO(BaseBO):
     def _list(self, model=None, selections=None, limit=50, query=None):
         model = model or self.model
         selections = selections or self.model_selections
-        
+
         if query is None:
             query = self._session.query(model)
 
@@ -30,21 +31,21 @@ class CrudBO(BaseBO):
 
     def get(self, id):
         try:
-            obj = self._session.query(self.model).filter(
-                    self.model.id == id).first()
+            obj = self._session.query(self.model).filter(self.model.id == id)\
+                                                 .first()
             return _extract_selections(obj, self.model_selections)
         finally:
             self._session.close()
 
     def _create(self, obj, return_id=False):
-        
+
         try:
             self._session.add(obj)
             self._session.commit()
-        
+
         except Exception as e:
             raise e
-        
+
         finally:
             if return_id:
                 return obj.id

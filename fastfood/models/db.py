@@ -3,6 +3,10 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.mysql import TEXT
+from passlib.apps import custom_app_context as pwd_context
+from itsdangerous import (TimedJSONWebSignatureSerializer
+                          as Serializer)
+
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -20,9 +24,13 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(45), nullable=False)
-    item_type = Column(ForeignKey(u'item_type.id'), primary_key=True, nullable=False, index=True)
+    item_type = Column(ForeignKey(u'item_type.id'), primary_key=True,
+                       nullable=False, index=True)
 
     item_type1 = relationship(u'ItemType')
+
+key = 'the quick brown fox jumps over the lazy dog'
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -30,12 +38,22 @@ class User(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(45), nullable=False)
     login = Column(String(45), nullable=False)
-    password = Column(String(45), nullable=False)
+    password = Column(String(150), nullable=False)
     email = Column(String(45), nullable=False)
-    role = Column(ForeignKey(u'user_role.id'), primary_key=True, nullable=False, index=True)
+    role = Column(ForeignKey(u'user_role.id'), primary_key=True,
+                  nullable=False, index=True)
 
     user_role = relationship(u'UserRole')
 
+    def hash_password(self, password):
+        self.password = pwd_context.encrypt(password)
+
+    def verify_password(self, password):
+        return pwd_context.verify(password, self.password)
+
+    def generate_auth_token(self, expiration=600):
+        s = Serializer(key, expires_in=expiration)
+        return s.dumps({'id': self.id})
 
 
 class ItemType(Base):
@@ -51,8 +69,12 @@ class Recipe(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     title = Column(String(45), nullable=False)
     rating = Column(String(45))
-    author = Column(ForeignKey(u'user.id'), primary_key=True, nullable=False, index=True)
-    complexity = Column(ForeignKey(u'complexity.id'), primary_key=True, nullable=False, index=True)
+    author = Column(ForeignKey(u'user.id'), primary_key=True, nullable=False,
+                    index=True)
+
+    complexity = Column(ForeignKey(u'complexity.id'), primary_key=True,
+                        nullable=False, index=True)
+
     description = Column(String(45), nullable=False)
 
     user = relationship(u'User')
@@ -61,7 +83,7 @@ class Recipe(Base):
 
 class RecipeItem(Base):
     __tablename__ = 'recipe_item'
-    
+
     id = Column(Integer, primary_key=True, nullable=False)
 
     recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True, index=True)
@@ -82,8 +104,10 @@ class RecipeCategory(Base):
 
 t_recipe_category_has_recipe = Table(
     'recipe_category_has_recipe', metadata,
-    Column('category_id', ForeignKey(u'recipe_category.id'), primary_key=True, nullable=False, index=True),
-    Column('recipe_id', ForeignKey(u'recipe.id'), primary_key=True, nullable=False, index=True)
+    Column('category_id', ForeignKey(u'recipe_category.id'), primary_key=True,
+           nullable=False, index=True),
+    Column('recipe_id', ForeignKey(u'recipe.id'), primary_key=True,
+           nullable=False, index=True)
 )
 
 
@@ -91,7 +115,8 @@ class Step(Base):
     __tablename__ = 'step'
 
     id = Column(Integer, primary_key=True, nullable=False)
-    recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True, nullable=False, index=True)
+    recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True,
+                       nullable=False, index=True)
     description = Column(TEXT(charset='latin1'), nullable=False)
 
     recipe = relationship(u'Recipe')

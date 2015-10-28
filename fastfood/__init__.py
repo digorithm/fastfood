@@ -1,8 +1,10 @@
 # Import flask and template operators
 from flask import Flask 
-
+from flask.ext.httpauth import HTTPBasicAuth
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
+
+auth = HTTPBasicAuth()
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -19,4 +21,3 @@ db = SQLAlchemy(app)
 #db.create_all()
 
 from fastfood.api import APIBase
-
