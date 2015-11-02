@@ -16,6 +16,7 @@ class RecipeBO(CrudBO):
     model_selections = ['id', 'title', 'rating', 'author', 'complexity',
                         'description']
 
+    # TODO: create logic to extract author and complexity
     def save_extracted_data(self, jsonfile):
         """
         get extracted json data and build a object to send to the
@@ -39,6 +40,7 @@ class RecipeBO(CrudBO):
                 item.recipe_id = obj_id
                 item.ingredient = ingredient.strip()
                 self._create(item)
+            return obj_id
 
     def list_full_recipes(self):
         ribo = RecipeItemBO()
