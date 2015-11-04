@@ -3,7 +3,7 @@ DEBUG = True
 
 # Define the application directory
 import os
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))  
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # Define the database - we are working with
 # SQLite for this example
@@ -12,6 +12,9 @@ DATABASE_CONNECT_OPTIONS = {}
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('db_path',
 	'mysql+pymysql://ba67ba5e8674a9:899cbd63@us-cdbr-iron-east-03.cleardb.net/heroku_f5bea19f4318e6d')
+
+SQLALCHEMY_POOL_RECYCLE = 299
+SQLALCHEMY_POOL_TIMEOUT = 20
 
 #test
 # Application threads. A common general assumption is
@@ -24,7 +27,7 @@ THREADS_PER_PAGE = 2
 CSRF_ENABLED     = True
 
 # Use a secure, unique and absolutely secret key for
-# signing the data. 
+# signing the data.
 CSRF_SESSION_KEY = "secret"
 
 # Secret key for signing cookies
