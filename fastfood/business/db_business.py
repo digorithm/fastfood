@@ -34,12 +34,14 @@ class RecipeBO(CrudBO):
                 s = Step()
                 s.recipe_id = obj_id
                 s.description = step
-                self._create(s)
+                sbo = StepBO()
+                sbo._create(s)
             for ingredient in recipe['ingredients']:
                 item = RecipeItem()
                 item.recipe_id = obj_id
                 item.ingredient = ingredient.strip()
-                self._create(item)
+                ribo = RecipeItemBO()
+                ribo._create(item)
             return obj_id
 
     def list_full_recipes(self):
@@ -85,8 +87,11 @@ class RecipeBO(CrudBO):
         obj = self._session.query(Recipe)\
                   .filter(self.model.id == recipe_id).first()
 
+        selections = _extract_selections(obj, self.model_selections)
+
         self._session.close()
-        return _extract_selections(obj, self.model_selections)
+
+        return selections
 
     def list_recipes_by_items(self, items, restrict=False):
         """
