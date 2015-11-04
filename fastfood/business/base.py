@@ -28,6 +28,7 @@ class CrudBO(BaseBO):
             return _extract_selections(objects, selections)
         finally:
             self._session.close()
+            db.engine.dispose()
 
     def get(self, id):
         try:
@@ -36,6 +37,7 @@ class CrudBO(BaseBO):
             return _extract_selections(obj, self.model_selections)
         finally:
             self._session.close()
+            db.engine.dispose()
 
     def _create(self, obj, return_id=False):
 
@@ -50,3 +52,4 @@ class CrudBO(BaseBO):
             if return_id:
                 return obj.id
             self._session.close()
+            db.engine.dispose()
