@@ -84,6 +84,8 @@ class RecipeBO(CrudBO):
 
         obj = self._session.query(Recipe)\
                   .filter(self.model.id == recipe_id).first()
+
+        self._session.close()
         return _extract_selections(obj, self.model_selections)
 
     def list_recipes_by_items(self, items, restrict=False):
@@ -111,7 +113,7 @@ class RecipeBO(CrudBO):
         for recipe_id in recipe_ids:
             recipe = self.list_full_recipe_by_id(recipe_id)
             recipes.append(recipe)
-        
+
         if restrict:
             recipes_match = []
             total_matches = 0
@@ -178,6 +180,7 @@ class UserBO(CrudBO):
 
         obj = self._session.query(User)\
                   .filter(self.model.login == login).first()
+        self._session.close()
         return obj
 
     @auth.verify_password
@@ -190,6 +193,7 @@ class UserBO(CrudBO):
             if not user or not user.verify_password(password):
                 return False
         g.user = user
+        userbo._session.close()
         return True
 
     @staticmethod
@@ -205,6 +209,7 @@ class UserBO(CrudBO):
             return None    # invalid token
         user = userbo._session.query(User)\
                      .filter(User.id == data['id']).first()
+        userbo._session.close()
         return user
 
     def register_new_user(self, User):
