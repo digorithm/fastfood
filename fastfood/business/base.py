@@ -1,6 +1,8 @@
 from fastfood import db
 from fastfood.utils import _extract_selections
 
+# IMPORTANT: db.engine.dispose is being tested
+# if something is wrong, undo that
 
 class BaseBO(object):
 
