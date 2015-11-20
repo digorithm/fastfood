@@ -1,5 +1,5 @@
 # Import flask and template operators
-from flask import Flask 
+from flask import Flask
 from flask.ext.httpauth import HTTPBasicAuth
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy

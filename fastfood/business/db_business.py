@@ -190,6 +190,7 @@ class UserBO(CrudBO):
 
     @auth.verify_password
     def verify_password(username_or_token, password):
+ 
         userbo = UserBO()
         user = userbo.verify_auth_token(username_or_token)
         if not user:

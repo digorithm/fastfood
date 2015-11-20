@@ -12,10 +12,12 @@ parser.add_argument('login')
 parser.add_argument('password')
 parser.add_argument('role')
 parser.add_argument('name')
+parser.add_argument('user_id')
 rbo = RecipeBO()
 sbo = StepBO()
 ribo = RecipeItemBO()
 ubo = UserBO()
+
 
 class Recipes(Resource):
 
@@ -42,6 +44,12 @@ class Recipes(Resource):
 
 class Users(Resource):
 
+    def get(self):
+
+        args = parser.parse_args()
+        user_id = args['user_id']
+        return ubo.get(user_id)
+
     def post(self):
         args = parser.parse_args()
         login = args['login']
@@ -55,7 +63,7 @@ class Users(Resource):
             # TODO: raise proper exception
             abort(400) # existing user
 
-        user = User(login = login, email = login, name = name, role = role)
+        user = User(login=login, email=login, name=name, role=role)
         user.hash_password(password)
         
         try:
@@ -79,4 +87,9 @@ api.add_resource(Users,
 @auth.login_required
 def get_auth_token():
     token = g.user.generate_auth_token(1500)
-    return jsonify({'token': token.decode('ascii'), 'duration': 1500})
+
+    return jsonify({'token': token.decode('ascii'), 'duration': 1500,
+                    'user': {'name': g.user.name,
+                             'id': g.user.id,
+                             'role': g.user.role,
+                             'email': g.user.email}})
