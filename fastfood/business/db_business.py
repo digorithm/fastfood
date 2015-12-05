@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from fastfood.models.db import Recipe, Step, RecipeItem, User
+from fastfood.models.db import Recipe, Step, RecipeItem, User, UserLikeRecipe
 import json
 from fastfood.business.base import CrudBO
 from fastfood.utils import _extract_selections, basic_food
@@ -220,3 +220,41 @@ class UserBO(CrudBO):
 
     def register_new_user(self, User):
         return self._create(User)
+
+
+class UserLikeRecipeBO(CrudBO):
+
+    model = UserLikeRecipe
+    model_selections = ['recipe_id', 'user_id']
+
+    def get_user_likes(self, user_id):
+
+        query = self._session.query(self.model)\
+                    .filter(self.model.user_id == user_id)
+
+        recipes = self._list(query=query)
+
+        likes = [recipe['recipe_id'] for recipe in recipes]
+
+        return likes
+
+    def get_recipe_likes(self, recipe_id):
+
+        query = self._session.query(self.model)\
+                    .filter(self.model.recipe_id == recipe_id)
+
+        users = self._list(query=query)
+
+        ids = [user['user_id'] for user in users]
+        return ids
+
+    def like_recipe(self, user_id, recipe_id):
+        obj = UserLikeRecipe(user_id=user_id, recipe_id=recipe_id)
+        return self._create(obj)
+
+    def remove_like(self, user_id, recipe_id):
+
+        query = self._session.query(self.model)\
+                    .filter(self.model.user_id == user_id,
+                            self.model.recipe_id == recipe_id)
+        return self._delete(query)

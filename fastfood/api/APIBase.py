@@ -1,5 +1,5 @@
 from fastfood import app, auth
-from fastfood.business.db_business import RecipeBO, StepBO, RecipeItemBO, UserBO
+from fastfood.business.db_business import RecipeBO, StepBO, RecipeItemBO, UserBO, UserLikeRecipeBO
 from fastfood.models.db import User
 import json
 from flask_restful import Resource, Api, reqparse, abort
@@ -13,16 +13,18 @@ parser.add_argument('password')
 parser.add_argument('role')
 parser.add_argument('name')
 parser.add_argument('user_id')
+parser.add_argument('recipe_id')
+parser.add_argument('action')
 rbo = RecipeBO()
 sbo = StepBO()
 ribo = RecipeItemBO()
 ubo = UserBO()
+ulrbo = UserLikeRecipeBO()
 
 
 class Recipes(Resource):
 
     def get(self, recipe_id=None):
-        
         # check if it was passed items to be filtered
         if 'items' in request.args:
             items = request.args['items'].split(',')
@@ -73,6 +75,60 @@ class Users(Resource):
         except Exception as e:
             raise e
 
+
+class LikeRecipe(Resource):
+
+    def post(self):
+
+        args = parser.parse_args()
+
+        user_id = args['user_id']
+        recipe_id = args['recipe_id']
+        action = args['action']
+
+        try:
+            if action == 'like':
+                ulrbo.like_recipe(user_id, recipe_id)
+            else:
+                ulrbo.remove_like(user_id, recipe_id)
+
+        except Exception as e:
+            raise e
+
+        finally:
+            return 'Action successful', 200
+
+
+class UserLikes(Resource):
+    # possible alternative: return the whole recipes instead of ids
+    def get(self):
+
+        args = parser.parse_args()
+        user_id = args['user_id']
+
+        try:
+            likes = ulrbo.get_user_likes(user_id)
+        except Exception as e:
+            raise e
+        finally:
+            return likes
+
+
+class RecipeLikes(Resource):
+    
+    def get(self):
+
+        args = parser.parse_args()
+        recipe_id = args['recipe_id']
+
+        try:
+            ids = ulrbo.get_recipe_likes(recipe_id)
+        except Exception as e:
+            raise e
+        finally:
+            return ids
+
+
 api.add_resource(Recipes,
         '/api/v1/recipes/',
         '/api/v1/recipes/<recipe_id>/',
@@ -80,6 +136,15 @@ api.add_resource(Recipes,
 
 api.add_resource(Users,
                  '/api/v1/users/')
+
+api.add_resource(LikeRecipe,
+                 '/api/v1/likerecipe/')
+
+api.add_resource(UserLikes,
+                 '/api/v1/userlikes/')
+
+api.add_resource(RecipeLikes,
+                 '/api/v1/recipelikes/')
 # /recipes/items/?items=list,of,items,to,be,searched&restrict=true/false
 
 

@@ -55,3 +55,45 @@ class CrudBO(BaseBO):
                 return obj.id
             self._session.close()
             db.engine.dispose()
+
+    def update(self, id, changes):
+        success = True
+        try:
+            self._session.query(self.model) \
+                .filter(self.model.id == id) \
+                .update(changes)
+            self._session.commit()
+        except:
+            success = False
+        finally:
+            self._session.close()
+            db.engine.dispose()
+        return success
+
+    def update_many(self, ids, changes):
+        for _id in ids:
+            self.update(_id, changes)
+
+    def delete(self, id):
+        """
+          Creates a simple query filter by the given ID and delete the entry from the DB;
+          If a custom behavior is wanted, you should inherit from it.
+        """
+        return self._delete(query=self._session.query(
+            self.model).filter(self.model.id == id))
+
+    def _delete(self, query):
+        """
+          Deletes using the given query filter
+        """
+        success = True
+        try:
+            query.delete()
+            self._session.commit()
+        except:
+            success = False
+        finally:
+            self._session.close()
+
+        return success
+

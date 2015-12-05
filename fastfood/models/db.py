@@ -127,3 +127,12 @@ class UserRole(Base):
 
     id = Column(Integer, primary_key=True)
     role = Column(String(45), nullable=False)
+
+
+class UserLikeRecipe(Base):
+
+    __tablename__ = 'user_like_recipe'
+    recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True,
+                       nullable=False, index=True)
+    user_id = Column(ForeignKey(u'user.id'), primary_key=True,
+                     nullable=False, index=True)
