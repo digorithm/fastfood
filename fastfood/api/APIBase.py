@@ -82,8 +82,8 @@ class LikeRecipe(Resource):
 
         args = parser.parse_args()
 
-        user_id = args['user_id']
-        recipe_id = args['recipe_id']
+        user_id = int(args['user_id'])
+        recipe_id = int(args['recipe_id'])
         action = args['action']
 
         try:
