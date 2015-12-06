@@ -3,6 +3,7 @@ from flask import Flask
 from flask.ext.httpauth import HTTPBasicAuth
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.cors import CORS
 
 auth = HTTPBasicAuth()
 
@@ -12,6 +13,8 @@ app = Flask(__name__)
 # Configurations
 app.config.from_object('config')
 app.config['DEBUG'] = True
+
+CORS(app)
 
 # Define the database object which is imported
 # by modules and controllers
