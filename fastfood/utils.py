@@ -4,6 +4,7 @@ basic_food = [u'água', u'sal', u'açucar', u'acucar', u'agua', u'alho', u'pimen
 
 selections_names = {}
 
+
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
@@ -51,3 +52,15 @@ def _extract_properties_atributes(obj):
 
     return properties_atributes    
 
+
+import time
+
+
+def timefunc(f):
+    def f_timer(*args, **kwargs):
+        start = time.time()
+        result = f(*args, **kwargs)
+        end = time.time()
+        print f.__name__, 'took', end - start, 'time'
+        return result
+    return f_timer

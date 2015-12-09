@@ -3,7 +3,7 @@
 from fastfood.models.db import Recipe, Step, RecipeItem, User, UserLikeRecipe
 import json
 from fastfood.business.base import CrudBO
-from fastfood.utils import _extract_selections, basic_food
+from fastfood.utils import _extract_selections, basic_food, timefunc
 from flask import g
 from fastfood import auth
 from itsdangerous import (TimedJSONWebSignatureSerializer
@@ -93,6 +93,7 @@ class RecipeBO(CrudBO):
 
         return selections
 
+    @timefunc
     def list_recipes_by_items(self, items, restrict=False):
         """
         This is kinda tricky. We have 2 modes:
