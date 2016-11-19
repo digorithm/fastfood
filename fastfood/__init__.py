@@ -1,9 +1,9 @@
 # Import flask and template operators
 from flask import Flask
-from flask.ext.httpauth import HTTPBasicAuth
+from flask_httpauth import HTTPBasicAuth
 # Import SQLAlchemy
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 auth = HTTPBasicAuth()
 
@@ -13,6 +13,8 @@ app = Flask(__name__)
 # Configurations
 app.config.from_object('config')
 app.config['DEBUG'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['TRAP_BAD_REQUEST_ERRORS'] = True
 
 CORS(app)
 

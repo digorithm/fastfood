@@ -22,6 +22,12 @@ ubo = UserBO()
 ulrbo = UserLikeRecipeBO()
 
 
+class HelloWorld(Resource):
+
+    def get(self):
+        return {"Status API": "200 OK"}
+
+
 class Recipes(Resource):
 
     def get(self, recipe_id=None):
@@ -60,18 +66,18 @@ class Users(Resource):
         role = args['role']
         if login is None or password is None:
             # TODO: raise proper exception
-            abort(400) # missing arguments
+            return { "message": "Some data are missing." } # missing arguments
         if ubo.check_login(login) is not None:
             # TODO: raise proper exception
-            abort(400) # existing user
+            return { "message": "User exist." } # existing user
 
         user = User(login=login, email=login, name=name, role=role)
         user.hash_password(password)
-        
+
         try:
             ubo.register_new_user(user)
             return "User Registration successful"
-        
+
         except Exception as e:
             raise e
 
@@ -115,7 +121,7 @@ class UserLikes(Resource):
 
 
 class RecipeLikes(Resource):
-    
+
     def get(self):
 
         args = parser.parse_args()
@@ -128,6 +134,8 @@ class RecipeLikes(Resource):
         finally:
             return ids
 
+
+api.add_resource(HelloWorld, '/api/v1')
 
 api.add_resource(Recipes,
         '/api/v1/recipes/',

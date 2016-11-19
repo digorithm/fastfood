@@ -15,14 +15,14 @@ metadata = Base.metadata
 class Complexity(Base):
     __tablename__ = 'complexity'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     complexity = Column(String(45), nullable=False)
 
 
 class Item(Base):
     __tablename__ = 'item'
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(45), nullable=False)
     item_type = Column(ForeignKey(u'item_type.id'), primary_key=True,
                        nullable=False, index=True)
@@ -35,7 +35,7 @@ key = 'the quick brown fox jumps over the lazy dog'
 class User(Base):
     __tablename__ = 'user'
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(45), nullable=False)
     login = Column(String(45), nullable=False)
     password = Column(String(150), nullable=False)
@@ -59,14 +59,14 @@ class User(Base):
 class ItemType(Base):
     __tablename__ = 'item_type'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     type = Column(String(45), nullable=False)
 
 
 class Recipe(Base):
     __tablename__ = 'recipe'
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     title = Column(String(45), nullable=False)
     rating = Column(String(45))
     author = Column(ForeignKey(u'user.id'), primary_key=True, nullable=False,
@@ -84,7 +84,7 @@ class Recipe(Base):
 class RecipeItem(Base):
     __tablename__ = 'recipe_item'
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
 
     recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True, index=True)
     item_id = Column(ForeignKey(u'item.id'), index=True)
@@ -96,7 +96,7 @@ class RecipeItem(Base):
 class RecipeCategory(Base):
     __tablename__ = 'recipe_category'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     category = Column(String(45), nullable=False)
 
     recipes = relationship(u'Recipe', secondary='recipe_category_has_recipe')
@@ -114,7 +114,7 @@ t_recipe_category_has_recipe = Table(
 class Step(Base):
     __tablename__ = 'step'
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     recipe_id = Column(ForeignKey(u'recipe.id'), primary_key=True,
                        nullable=False, index=True)
     description = Column(TEXT(charset='latin1'), nullable=False)

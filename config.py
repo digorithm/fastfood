@@ -11,7 +11,7 @@ DATABASE_CONNECT_OPTIONS = {}
 
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('db_path',
-	'mysql+pymysql://root:sa@localhost:3306/geladeiradodia20')
+	'mysql+pymysql://ba67ba5e8674a9:899cbd63@us-cdbr-iron-east-03.cleardb.net/heroku_f5bea19f4318e6d')
 
 SQLALCHEMY_POOL_RECYCLE = 3600
 SQLALCHEMY_POOL_TIMEOUT = 50
@@ -21,7 +21,7 @@ SQLALCHEMY_POOL_TIMEOUT = 50
 # using 2 per available processor cores - to handle
 # incoming requests using one and performing background
 # operations using the other.
-THREADS_PER_PAGE = 2
+# THREADS_PER_PAGE = 2
 
 # Enable protection agains *Cross-site Request Forgery (CSRF)*
 CSRF_ENABLED     = True
